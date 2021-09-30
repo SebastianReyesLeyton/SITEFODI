@@ -22,7 +22,7 @@ sudo npm i express ejs morgan nodemon
 ## Database
 
 ~~~
-sudo npm i mysql bcryptjs passport passport-local timeago.js connect-flash express-validator
+sudo npm i mysql bcryptjs passport passport-local timeago.js connect-flash express-validator express-form-data
 ~~~
 
 If you do not have mysql and your OS is Ubuntu, run the next command
@@ -44,3 +44,6 @@ sudo npm i express-session express-handlebars express-mysql-session
 
 1. https://www.solvetic.com/tutoriales/article/9283-desinstalar-mariadb-ubuntu/
 2. https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04-es
+
+Video para continuar el desarrollo
+3. https://www.youtube.com/watch?v=qJ5R9WTW0_E

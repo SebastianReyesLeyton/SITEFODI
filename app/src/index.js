@@ -1,8 +1,12 @@
 const express = require('express')
 const morgan = require('morgan')
-const routes = require('./routes')
 const exphbs = require('express-handlebars')
+const formData = require('express-form-data')
+const os = require("os");
 const path = require('path')
+
+const routes = require('./routes')
+const user_routers = require('./routes/users')
 
 // Initializations
 const app = express()
@@ -21,9 +25,23 @@ app.engine('.hbs', exphbs({
 }))
 app.set('view engine', '.hbs')
 
+const options = {
+    uploadDir: os.tmpdir(),
+    autoClean: true
+  };
+
 // Middlewares
 app.use(morgan('dev'))
-app.use(express.json())
+// app.use(express.urlencoded({extended: true}))
+// parse data with connect-multiparty. 
+app.use(formData.parse(options));
+// delete from the request all empty files (size == 0)
+app.use(formData.format());
+// change the file objects to fs.ReadStream 
+app.use(formData.stream());
+// union the body and the files
+app.use(formData.union());
+  
 
 // Global Variables
 app.use((req, res, next) => {
@@ -32,6 +50,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use(routes)
+app.use('/users',user_routers)
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')))

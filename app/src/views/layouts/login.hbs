@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="css/login.css">
+
+<div class="container" id='container'>
+
+    <div class="row">
+        <div class="content-row align-center flex-col">
+            <img src="/img/login1.png" alt="">
+        </div>
+        <div class="col align-center flex-col sign-up">
+            <label for="" id="name-app">SITEFODI</label>
+            <div class="form-wrapper align-center">
+
+                <form action="/login" method="POST" class="form login" enctype="multipart/form-data">
+                    <div class="input-group align-center" id="avatar-div">
+                        <img src="" id="avatar" alt="" width="150px" height="150px">
+                        <div class="avatar-options align-center"></div>
+                        <input type="hidden" name="avatar" id="avatar-file" value='/img/avatar-astr.png'>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-at"></i>
+                        <input type="email" name="email" id="email" placeholder="Correo Electronico">
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-unlock-alt"></i>
+                        <input type="password" name="password" id="password" placeholder="Contraseña">
+                    </div>
+
+                    <button type="submit">
+                        Ingresar
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/js/login.js"></script>
