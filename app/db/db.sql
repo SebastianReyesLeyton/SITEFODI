@@ -42,10 +42,10 @@ DESCRIBE THERAPIST;
 
 CREATE TABLE PATIENT (
     id INT NOT NULL,
-    gender VARCHAR(4) NOT NULL,
+    gender VARCHAR(4) NOT NULL CHECK(gender='niño' OR gender='niña'),
     leftImplant VARCHAR(50) NOT NULL,
     rightImplant VARCHAR(50) NOT NULL,
-    age INT NOT NULL,
+    age INT NOT NULL CHECK(age > 0 AND age <= 16),
     ti VARCHAR(20) UNIQUE NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES USER_TABLE(id)
@@ -70,7 +70,29 @@ CREATE TABLE THERAPIST_USER (
 DESCRIBE THERAPIST_USER;
 \! echo "\n";
 
--- ------------------ DEFAULT DATA
+-- -------------------- SECOND PART QUESTIONS -----------------
+
+-- IMAGE TABLE
+
+CREATE TABLE IMAGE (
+    id INT NOT NULL AUTO_INCREMENT,
+    url VARCHAR(200) NOT NULL,
+    fullname VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+-- CARD TABLE
+
+CREATE TABLE CARD (
+    id INT NOT NULL AUTO_INCREMENT,
+    label VARCHAR(100),
+    id_image INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_image) REFERENCES IMAGE(id)
+);
+
+
+-- ------------------------ DEFAULT DATA -----------------------
 
 \! echo "SHOW DATA DEFAULT\n\n";
 
@@ -110,6 +132,10 @@ VALUES (3, 'niña', 'implante coclear', 'audifono', 5, '1006147589');
 SELECT * FROM PATIENT;
 \! echo "\n";
 
+-- RELATION BETWEEN PATIENT AND THERAPIST
+
+INSERT INTO THERAPIST_USER (idPatient, idTherapist)
+VALUES (3, 1);
 
 SELECT * FROM USER_TABLE 
 INNER JOIN PATIENT ON USER_TABLE.id = PATIENT.id;

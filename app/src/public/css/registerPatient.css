@@ -1,0 +1,62 @@
+
+.container {
+    height: calc(100vh - 90px - 64px);
+}
+
+.container .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container .card #title {
+    font-size: 50px;
+}
+
+.container .card .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 1rem;
+    width: calc(100% - 1rem);
+    height: calc(100% - 150px);
+}
+
+.container .card .form .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 90%;
+    margin-bottom: 1.5rem;
+}
+
+.container .card .form .card-content .input-class {
+    margin: 1rem 0;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: 336px 1fr;
+    width: 60%;
+}
+
+.container .card .form .card-content .input-class input,
+.container .card .form .card-content .input-class select {
+    border: 1px solid gray;
+    padding: 0.2rem 0.1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: all 300ms ease-in-out;
+}
+
+.container .card .form .card-content .input-class input:focus,
+.container .card .form .card-content .input-class select:focus {
+    border: 1px solid blue;
+}
+
+.button-submit {
+    padding: 0.8rem 0;
+}

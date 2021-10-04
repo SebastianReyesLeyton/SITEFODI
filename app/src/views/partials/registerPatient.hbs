@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/css/registerPatient.css">
+
+<div class="container">
+
+    <div class="card">
+        <label for="" id="title">Registro de paciente</label>
+        <form action="/users/register" method="POST" class="form" enctype="multipart/form-data">
+            
+            <div class="card-content">
+
+                <div class="input-class">
+                    <label for="">Niño/niña: </label>
+                    <select name="gender" id="gender" required>
+                        <option value="">--Selecciona--</option>
+                        <option value="niño">Niño</option>
+                        <option value="niña">Niña</option>
+                    </select>
+                </div>
+
+                <div class="input-class">
+                    <label for="" class="fullname">Nombre completo:</label>
+                    <input type="text" name="fullname" id="fullname" placeholder="Nombre" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Número de documento:</label>
+                    <input type="text" name="ti" id="ti" placeholder="Tarjeta de identidad" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Edad: </label>
+                    <input type="number" name="age" id="age" min="1" max="16" placeholder="1-16" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Correo electronico: </label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Contraseña: </label>
+                    <input type="password" name="passwd" id="passwd" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Implante izquierdo: </label>
+                    <input type="text" name="leftImplant" id="leftImplant">
+                </div>
+
+                <div class="input-class">
+                    <label for="">Implante derecho:</label>
+                    <input type="text" name="rightImplant" id="rightImplant">
+                </div>
+
+            </div>
+
+            <button type="submit" class="col-6 btn btn-info button-submit">Registrar</button>
+        </form>
+    
+    </div>
+
+</div>

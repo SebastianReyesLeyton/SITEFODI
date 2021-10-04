@@ -4,4 +4,4 @@ let web_user = {
     email: ''
 };
 
-module.exports = web_user;
+exports.user = web_user;

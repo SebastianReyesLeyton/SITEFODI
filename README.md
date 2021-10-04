@@ -47,3 +47,5 @@ sudo npm i express-session express-handlebars express-mysql-session
 
 Video para continuar el desarrollo
 3. https://www.youtube.com/watch?v=qJ5R9WTW0_E
+4. https://www.codegrepper.com/code-examples/sql/node.js+mysql+Error%3A+ER_NOT_SUPPORTED_AUTH_MODE%3A+Client+does+not+support+authentication+protocol+requested+by+server%3B+consider+upgrading+MySQL+client
+5. 

@@ -1,0 +1,75 @@
+.container {
+    height: calc(100vh - 90px - 64px);
+}
+
+.container .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container .card #title {
+    font-size: 50px;
+}
+
+.container .card .card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0);
+    margin-bottom: 2rem;
+    border-bottom: 4px solid rgba(153, 153, 153, 0.35);
+}
+
+.container .card .card-header img {
+    width: 200px;
+    height: 200px;
+    border: 5px solid rgba(153, 153, 153, 0.35);
+    box-shadow: 5px 5px rgba(gray);
+    border-radius: 50%;
+    background-color:rgba(175, 235, 248, 0.912);
+}
+
+.container .card .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 1rem;
+    width: calc(100% - 1rem);
+    height: calc(100% - 200px);
+}
+
+
+.container .card .form .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 1.5rem;
+}
+
+.container .card .form .card-content .input-class {
+    margin: 1rem 0;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: 336px 1fr;
+    width: 60%;
+}
+
+.container .card .form .card-content .input-class input {
+    border: 1px solid gray;
+    padding: 0.2rem 0.1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: all 300ms ease-in-out;
+    background-color: rgba(175, 235, 248, 0.2);
+}
+
+.container .card .form .card-content .input-class input:focus,
+.container .card .form .card-content .input-class input:hover {
+    border: 1px solid blue;
+}

@@ -57,6 +57,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Starting the server
 
-app.listen(app.get('port'), () => {
+app.listen(app.get('port'), '0.0.0.0', () => {
     console.log(`Server running on: http://localhost:${app.get('port')}`)
 })
