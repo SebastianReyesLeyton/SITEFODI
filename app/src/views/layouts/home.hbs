@@ -11,35 +11,49 @@
     <div class="sidebar-menu">
         <ul>
             {{#ifEquals title "Inicio"}}
-                {{#if therapist}}
+                {{#ifEquals user.userType "Terapeuta"}}
                     <li>
                         <a href="/home/therapist" class="active" id="Inicio"> <span class="fas fa-home"></span>
                         <span>Inicio</span> </a>
                     </li>
                 {{else}}
-                    <li>
-                        <a href="/home/patient" class="active" id="Inicio"> <span class="fas fa-home"></span>
-                        <span>Inicio</span> </a>
-                    </li>
-                {{/if}}
+                    {{#ifEquals user.userType "Paciente"}}
+                        <li>
+                            <a href="/home/patient" class="active" id="Inicio"> <span class="fas fa-home"></span>
+                            <span>Inicio</span> </a>
+                        </li>
+                    {{else}}
+                        <li>
+                            <a href="/home/supervisor" class="active" id="Inicio"> <span class="fas fa-home"></span>
+                            <span>Inicio</span> </a>
+                        </li>
+                    {{/ifEquals}}
+                {{/ifEquals}}
             {{else}}
-                {{#if therapist}}
+                {{#ifEquals user.userType "Terapeuta"}}
                     <li>
                         <a href="/home/therapist" id="Inicio"> <span class="fas fa-home"></span>
                         <span>Inicio</span> </a>
                     </li>
                 {{else}}
-                    <li>
-                        <a href="/home/patient" id="Inicio"> <span class="fas fa-home"></span>
-                        <span>Inicio</span> </a>
-                    </li>
-                {{/if}}
+                    {{#ifEquals user.userType "Paciente"}}
+                        <li>
+                            <a href="/home/patient" id="Inicio"> <span class="fas fa-home"></span>
+                            <span>Inicio</span> </a>
+                        </li>
+                    {{else}}
+                        <li>
+                            <a href="/home/supervisor" id="Inicio"> <span class="fas fa-home"></span>
+                            <span>Inicio</span> </a>
+                        </li>
+                    {{/ifEquals}}
+                {{/ifEquals}}
 
             {{/ifEquals}}
 
             {{!-- SHOW PATIENTS OPTION --}}
 
-            {{#if therapist}}
+            {{#ifEquals user.userType "Terapeuta"}}
                 {{#ifEquals title "Ver Pacientes"}}
                     <li>
                         <a href="/show-patients/therapist" class="active" id="Pacientes"> <span class="fas fa-user-friends"></span> 
@@ -52,7 +66,22 @@
                     </li>
 
                 {{/ifEquals}}
-            {{/if}}
+            {{else}}
+                {{#ifEquals user.userType "Supervisor"}}
+                    {{#ifEquals title "Ver Pacientes"}}
+                        <li>
+                            <a href="/show-patients/supervisor" class="active" id="Pacientes"> <span class="fas fa-user-friends"></span> 
+                            <span>Ver Pacientes</span> </a>
+                        </li>
+                    {{else}}
+                        <li>
+                            <a href="/show-patients/supervisor" id="Pacientes"> <span class="fas fa-user-friends"></span> 
+                            <span>Ver Pacientes</span> </a>
+                        </li>
+
+                    {{/ifEquals}}
+                {{/ifEquals}}
+            {{/ifEquals}}
 
             {{!-- REGISTER PATIENTS OPTION --}}
 
@@ -153,14 +182,10 @@
         {{/if}}
 
         <div class="user-wrapper">
-            <img src={{user.avatar}} width="60px" height="60px"  alt="">
+            <img src={{avatar}} width="60px" height="60px"  alt="">
             <div>
                 <h4>{{user.name}}</h4>
-                {{#if therapist}}
-                    <small>Terapeuta</small>
-                {{else}}
-                    <small>Paciente</small>
-                {{/if}}
+                <small>{{user.userType}}</small>
             </div>
         </div>
         
@@ -169,15 +194,24 @@
     <main>
         {{#ifEquals title "Perfil"}}
             {{#if therapist}}
-                {{> profile-therapist}}
+                {{> profile-therapist }}
             {{else}}
-                {{> profile-patient}}
+                {{> profile-patient }}
             {{/if}}
         {{/ifEquals}}
 
         {{#ifEquals title "Registrar Paciente"}}
-            {{> registerPatient}}
+            {{> registerPatient }}
         {{/ifEquals}}
+
+        {{#ifEquals title "Ver Pacientes"}}
+            {{> show-patients }}
+        {{/ifEquals}}
+
+        {{#ifEquals title "Tests"}}
+            {{> home-test }}
+        {{/ifEquals}}
+
     </main>
 </div>
 

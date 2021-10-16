@@ -5,6 +5,34 @@ body {
     background: linear-gradient(217deg, rgb(157, 199, 221) 30%, rgba(132, 248, 223, 0.967));
 }
 
+.error-message {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition-timing-function: cubic-bezier(0, 0, 1, 1);
+    animation: errorMessage 5.5s;
+    top: -4rem;
+}
+
+.error-message .error-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin-top: 0.5rem;
+    padding: 0.8rem 0rem;
+    background-color: rgba(97, 100, 100, 0.85);
+    color: white;
+    border-radius: 0.5rem;
+}
+
+.error-message .error-content span {
+    font-weight: bolder;
+    font-size: 18px;
+}
+
 .container-login {
     position: relative;
     min-height: 100vh;
@@ -324,5 +352,20 @@ body::before {
     }
     to {
         opacity: 0;
+    }
+}
+
+@keyframes errorMessage {
+    0% {
+        display: none;
+        top: -4rem;
+    }
+    30% {
+        display: flex;
+        top: 0rem;
+    }
+    100% {
+        display: none;
+        top: -4rem;
     }
 }

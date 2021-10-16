@@ -7,6 +7,7 @@ const path = require('path')
 
 const routes = require('./routes')
 const user_routers = require('./routes/users')
+const test_routers = require('./routes/tests')
 
 // Initializations
 const app = express()
@@ -32,7 +33,7 @@ const options = {
 
 // Middlewares
 app.use(morgan('dev'))
-// app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
 // parse data with connect-multiparty. 
 app.use(formData.parse(options));
 // delete from the request all empty files (size == 0)
@@ -50,7 +51,8 @@ app.use((req, res, next) => {
 
 // Routes
 app.use(routes)
-app.use('/users',user_routers)
+app.use('/users', user_routers)
+app.use('/tests', test_routers)
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')))

@@ -17,7 +17,7 @@ CREATE TABLE USER_TABLE (
     fullname VARCHAR(100) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
     passwd VARCHAR(20) NOT NULL,
-    isRoot BOOLEAN DEFAULT false,
+    userType VARCHAR(10) NOT NULL CHECK(userType IN ('Paciente', 'Supervisor', 'Terapeuta')) DEFAULT 'Paciente',
     PRIMARY KEY (id)
 );
 
@@ -42,11 +42,12 @@ DESCRIBE THERAPIST;
 
 CREATE TABLE PATIENT (
     id INT NOT NULL,
-    gender VARCHAR(4) NOT NULL CHECK(gender='niño' OR gender='niña'),
-    leftImplant VARCHAR(50) NOT NULL,
-    rightImplant VARCHAR(50) NOT NULL,
-    age INT NOT NULL CHECK(age > 0 AND age <= 16),
-    ti VARCHAR(20) UNIQUE NOT NULL,
+    gender VARCHAR(4) NOT NULL CHECK( gender =' niño' OR gender = 'niña') ,
+    leftHearingAid VARCHAR(50) NOT NULL,
+    rightHearingAid VARCHAR(50) NOT NULL,
+    age INT NOT NULL CHECK( age > 0 AND age <= 16 ),
+    documentType VARCHAR(20) NOT NULL CHECK( documentType IN ('Registro Civil', 'Tarjeta de Identidad', 'Otro')),
+    docNum VARCHAR(25) UNIQUE NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES USER_TABLE(id)
 );
@@ -70,7 +71,7 @@ CREATE TABLE THERAPIST_USER (
 DESCRIBE THERAPIST_USER;
 \! echo "\n";
 
--- -------------------- SECOND PART QUESTIONS -----------------
+-- -------------------- SECTION QUESTIONS -----------------
 
 -- IMAGE TABLE
 
@@ -80,6 +81,10 @@ CREATE TABLE IMAGE (
     fullname VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
 );
+
+\! echo "TABLE: IMAGE";
+DESCRIBE IMAGE;
+\! echo "\n";
 
 -- CARD TABLE
 
@@ -91,6 +96,67 @@ CREATE TABLE CARD (
     FOREIGN KEY (id_image) REFERENCES IMAGE(id)
 );
 
+\! echo "TABLE: CARD";
+DESCRIBE CARD;
+\! echo "\n";
+
+-- QUESTIONS
+
+CREATE TABLE QUESTION (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    type INT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+\! echo "TABLE: QUESTION";
+DESCRIBE QUESTION;
+\! echo "\n";
+
+-- ---------------------- SECTION TEST -------------------------
+
+-- TEST
+
+CREATE TABLE TEST (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    PRIMARY KEY (id)
+);
+
+\! echo "TABLE: TEST";
+DESCRIBE TEST;
+\! echo "\n";
+
+CREATE TABLE TEST_QUESTION (
+    id INT NOT NULL AUTO_INCREMENT, 
+    idTest INT NOT NULL, 
+    idQuestion INT,
+    questionOrder INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idTest) REFERENCES TEST(id),
+    FOREIGN KEY (idQuestion) REFERENCES QUESTION(id)
+);
+
+\! echo "TABLE: TEST_QUESTION";
+DESCRIBE TEST_QUESTION;
+\! echo "\n";
+
+-- -------------------- SECTION THERAPHY -----------------------
+
+CREATE TABLE THERAPY (
+    id INT NOT NULL AUTO_INCREMENT,
+    videoConference VARCHAR(200),
+    dateTheraphy DATE NOT NULL,
+    idTherapist_User INT NOT NULL,
+    idTest INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idTherapist_User) REFERENCES THERAPIST_USER(id),
+    FOREIGN KEY (idTest) REFERENCES TEST(id)
+);
+
+\! echo "TABLE: THERAPY";
+DESCRIBE THERAPY;
+\! echo "\n";
 
 -- ------------------------ DEFAULT DATA -----------------------
 
@@ -98,11 +164,11 @@ CREATE TABLE CARD (
 
 -- USER
 
-INSERT INTO USER_TABLE (id, fullname, email, passwd, isRoot)
-VALUES (1, 'Juan Sebastian Reyes Leyton', 'sebas.reyes2002@hotmail.com', 'Epyphone01', true);
+INSERT INTO USER_TABLE (id, fullname, email, passwd, userType)
+VALUES (1, 'Juan Sebastian Reyes Leyton', 'sebas.reyes2002@hotmail.com', 'Epyphone01', 'Supervisor');
 
-INSERT INTO USER_TABLE (id, fullname, email, passwd)
-VALUES (2, 'Pepito Perez', 'juaninreyes2002@hotmail.com', 'Epyphone01');
+INSERT INTO USER_TABLE (id, fullname, email, passwd, userType)
+VALUES (2, 'Pepito Perez', 'juaninreyes2002@hotmail.com', 'Epyphone01', 'Terapeuta');
 
 INSERT INTO USER_TABLE (id, fullname, email, passwd)
 VALUES (3, 'Vanessa Loaiza', 'vane.loaiza@hotmail.com', 'bebe1');
@@ -125,8 +191,8 @@ SELECT * FROM THERAPIST;
 
 -- PATIENT
 
-INSERT INTO PATIENT (id, gender, leftImplant, rightImplant, age, ti)
-VALUES (3, 'niña', 'implante coclear', 'audifono', 5, '1006147589');
+INSERT INTO PATIENT (id, gender, leftHearingAid, rightHearingAid, age, docNum, documentType)
+VALUES (3, 'niña', 'Implante Coclear', 'Audifono', 5, '1006147589', 'Tarjeta de Identidad');
 
 \! echo "TABLE: PATIENT";
 SELECT * FROM PATIENT;
@@ -135,7 +201,24 @@ SELECT * FROM PATIENT;
 -- RELATION BETWEEN PATIENT AND THERAPIST
 
 INSERT INTO THERAPIST_USER (idPatient, idTherapist)
-VALUES (3, 1);
+VALUES (3, 2);
 
 SELECT * FROM USER_TABLE 
 INNER JOIN PATIENT ON USER_TABLE.id = PATIENT.id;
+
+\! echo "\n";
+
+-- TESTS
+
+INSERT INTO TEST (name)
+VALUES ('Apira');
+
+INSERT INTO TEST (name)
+VALUES ('Prueba 1');
+
+INSERT INTO TEST (name)
+VALUES ('Prueba 2');
+
+\! echo "TABLE: TEST";
+SELECT * FROM TEST;
+\! echo "\n";

@@ -15,42 +15,37 @@
 
                 <div class="input-class">
                     <label for="">Niño/niña: </label>
-                    <input type="text" name="gender" id="gender" value="Niño" disabled>
+                    <input type="text" name="gender" id="gender" value="{{user.user.gender}}" disabled>
                 </div>
 
                 <div class="input-class">
                     <label for="" class="fullname">Nombre completo:</label>
-                    <input type="text" name="fullname" id="fullname" placeholder="">
+                    <input type="text" name="fullname" id="fullname" value="{{user.user.name}}" placeholder="" disabled>
                 </div>
 
                 <div class="input-class">
                     <label for="">Número de documento:</label>
-                    <input type="text" name="ti" id="ti" disabled>
+                    <input type="text" name="ti" id="ti" value="{{user.user.ti}}" disabled>
                 </div>
 
                 <div class="input-class">
                     <label for="">Edad: </label>
-                    <input type="text" name="age" id="age" disabled>
+                    <input type="text" name="age" id="age" value="{{user.user.age}}" disabled>
                 </div>
 
                 <div class="input-class">
                     <label for="">Correo electronico: </label>
-                    <input type="email" name="email" id="email" disabled>
-                </div>
-
-                <div class="input-class">
-                    <label for="">Contraseña: </label>
-                    <input type="password" name="passwd" id="passwd" disabled>
+                    <input type="email" name="email" id="email" value="{{user.user.email}}" disabled>
                 </div>
 
                 <div class="input-class">
                     <label for="">Implante izquierdo: </label>
-                    <input type="text" name="leftImplant" id="leftImplant" disabled>
+                    <input type="text" name="leftImplant" id="leftImplant" value="{{user.user.leftImplant}}" disabled>
                 </div>
 
                 <div class="input-class">
                     <label for="">Implante derecho:</label>
-                    <input type="text" name="rightImplant" id="rightImplant" disabled>
+                    <input type="text" name="rightImplant" id="rightImplant" value="{{user.user.rightImplant}}" disabled>
                 </div>
 
             </div>

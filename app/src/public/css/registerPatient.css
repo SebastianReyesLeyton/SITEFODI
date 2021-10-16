@@ -12,6 +12,7 @@
 
 .container .card #title {
     font-size: 50px;
+    font-weight: bold;
 }
 
 .container .card .form {

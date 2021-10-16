@@ -43,6 +43,22 @@
     }
 }
 
+@media (min-width: 1387px){
+    .container .card .form .card-content .input-class {
+        margin: 1rem 0;
+        font-size: 1.25rem;
+        display: grid;
+        grid-template-columns: 15.625rem 1fr;
+        width: 75%;
+    }
+
+    .container .card .card-header img {
+        width: 10.5rem;
+        height: 10.5rem;
+    }
+}
+
+
 @media (min-width: 1388px) {
     .container .card .form .card-content .input-class {
         margin: 1rem 0;
@@ -71,6 +87,7 @@
 
 .container .card #title {
     font-size: 50px;
+    font-weight: bold;
 }
 
 .container .card .card-header {

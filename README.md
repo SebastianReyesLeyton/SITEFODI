@@ -1,25 +1,23 @@
 # SITEFODI
 
 Integrants:
-    - Alexander Castro Contreras.
-    - Juan Sebastian Reyes Leyton.
+- Alexander Castro Contreras.
+- Juan Sebastian Reyes Leyton.
 
-## Step 1
+## Description
 
-To create this project first the command:
+## How to compile this project
 
-~~~
-sudo npm install --yes
-~~~
+### Install Node module
 
-After, we install the modules:
+we install the modules:
 
 ~~~
 sudo npm i express ejs morgan nodemon
 ~~~
 
 
-## Database
+### Database
 
 ~~~
 sudo npm i mysql bcryptjs passport passport-local timeago.js connect-flash express-validator express-form-data
@@ -37,6 +35,23 @@ Continue with the tutorial show in the next link: https://www.digitalocean.com/c
 
 ~~~
 sudo npm i express-session express-handlebars express-mysql-session
+~~~
+
+## How to run this app
+
+You must sure that `make` is installed on your device. If you do not have install `make` go to this link: 
+
+- Ubuntu: https://zoomadmin.com/HowToInstall/UbuntuPackage/make
+- Windows: http://gnuwin32.sourceforge.net/packages/make.htm
+
+Also, you must have installed `npm` with the version `7.13.0`, and `node` version must be `10.19.0`.
+
+## How to create a project in nodejs
+
+To create this project first the command:
+
+~~~
+sudo npm install --yes
 ~~~
 
 

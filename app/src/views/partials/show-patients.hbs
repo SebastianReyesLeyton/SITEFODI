@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/show-patients.css">
+
+<div class="container">
+    
+    <div class="card">
+
+        <span id="title">Mis pacientes</span>
+        <div class="card-content">
+            
+            <div class="user-class user-header">
+
+                <ul class="user-content">
+                    <li class="column name">NOMBRE</li>
+                    <li class="column age">EDAD</li>
+                    <li class="column email">EMAIL</li>
+                    <li class="column ti">NÚMERO DE DOCUMENTO</li>
+                    <li class="column"></li>
+                    
+                </ul>
+            </div>
+
+            <div class="users">
+
+                {{#each users}}
+                    <div class="user-class">
+                        <ul class="user-content">
+                            <li class="column name">{{this.fullname}}</li>
+                            <li class="column">{{this.age}}</li>
+                            <li class="column">{{this.email}}</li>
+                            <li class="column">{{this.docNum}}</li>
+                            <li class="column">
+                                <div class="user-options">
+                                    <a href=""><i class="fas fa-user-edit"></i></a>
+                                    <a href=""><i class="fas fa-user-times"></i></a>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="/js/show-patients.js"></script>

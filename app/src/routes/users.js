@@ -10,18 +10,31 @@ router.post('/login', async (req, res) => {
         const { avatar, email, password } = req.body;
         const ans = await userService.userLogin(email, password)
         
+        web_user.avatar = avatar;
         console.log(ans);
-        web_user.user = { avatar, email };
-        web_user.user.name = ans.user.name;
-        web_user.user.id = ans.user.id;
-        console.log(web_user)
+
         if (ans.err.code == 0) {
-            if (ans.err.message === 'Therapist') {
-                res.redirect('/home/therapist')
-            }
-            else {
+            if (ans.err.message !== 'Patient') {
+
+                web_user.user = ans.user
+
+                console.log(web_user)
+                
+                if (ans.err.message === 'Therapist') {
+                    res.redirect('/home/therapist')
+                } else {
+                    res.redirect('/home/supervisor')
+                }
+            } else {
+                web_user.user = ans.user
+
+                console.log(web_user)
+
                 res.redirect('/home/patient')
             }
+        }
+        else {
+            res.render('layouts/login', { err: ans.err.message })
         }
 
     } catch (err) {
@@ -43,6 +56,19 @@ router.post('/register', async (req, res) => {
         }
         
     } catch (err) {
+        console.log(err)
+    }
+})
+
+router.get('/patients', async (req, res) => {
+    try {
+        let ans = await userService.getPatients()
+        console.log(ans)
+        res.statusCode = 200
+        res.send(ans.ans)
+        
+    } catch (err) {
+        console.log('Error')
         console.log(err)
     }
 })

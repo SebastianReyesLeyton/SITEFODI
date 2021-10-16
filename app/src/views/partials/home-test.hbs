@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/css/home-test.css">
+
+<div class="container">
+
+    <div class="card">
+        <label for="" id="title">Pruebas Fonoaudiológicas</label>
+        <div class="card-content">
+
+            <div class="card-tests">
+                {{#each tests}}
+                    <a href="/tests/therapist/test/{{this.id}}" class="card-test">
+                        <i class="fas fa-file-signature" id="test-icon"></i>
+                        <div class="card-test-content">
+                            <div class="test-header">
+                                <label for="" class="test-title">{{this.name}}</label>
+                            </div>
+                            <div class="test-content">
+                                <label for="" class="test-label">Código: <span class="test-name">{{this.id}}</span> </label>
+                            </div>
+                        </div>
+                    </a>
+                {{/each}}
+
+                <a class="card-test">
+                    <div id="plus" class="card-test-content">
+                        <i class="fas fa-plus-circle" id="op1" onclick="op_hidden()"></i>
+                        <form action = "/tests/create" id="op2" class="option-hidden" method='POST' enctype="multipart/form-data">
+                            <label for="" class="test-label">Nombre</label>
+                            <input type="text" name="name" id="test-name">
+                            <div class="buttons">
+                                <div class="cancel" onclick="op_hidden()">Cancelar</div>
+                                <button type="submit">Crear</button>
+                            </div>
+                        </form>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="/js/tests.js"></script>
