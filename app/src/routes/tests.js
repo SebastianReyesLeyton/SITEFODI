@@ -29,10 +29,16 @@ router.get('/therapist', async (req, res) => {
     }
 });
 
-router.get('/therapist/test/:id', (req, res) => {
-    let id = req.params.id
-    console.log(`/therapist/test/${id}`)
-
+router.get('/therapist/test/:id', async (req, res) => {
+    try {
+        let id = req.params.id
+        console.log(`/therapist/test/${id}`)
+        let ans = await testService.getTestById(id)
+        console.log(ans)
+        res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Prueba', test: ans.ans })
+    } catch (err) {
+        console.log(err)
+    }
 });
 
 router.get('/patient', (req, res) => {

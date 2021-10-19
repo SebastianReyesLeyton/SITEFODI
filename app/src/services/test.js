@@ -22,6 +22,23 @@ class TestService {
         return { err, ans }
     }
 
+    async getTestById(id) {
+        let ans = await this.testRespository.getTestById(id)
+        let err = {
+            code: 0,
+            message: 'Ok'
+        };
+
+        if ( !ans.length ) {
+            err.code = 1;
+            err.message = 'La prueba con ese código no existe.'
+        } else {
+            ans = ans[0]
+        }
+
+        return { err, ans }
+    }
+
     async createTest( test ) {
         let ans = await this.testRespository.createTest( test )
         let err = {

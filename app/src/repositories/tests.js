@@ -9,6 +9,11 @@ class TestRepository {
         return ans
     }
 
+    getTestById(id) {
+        const ans = db.query('SELECT * FROM TEST WHERE (id = ?)', [id])
+        return ans
+    }
+
     createTest( test ) {
         const ans = db.query('INSERT INTO TEST(name) VALUES (?)', [test.name])
         return ans
