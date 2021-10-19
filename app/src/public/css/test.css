@@ -3,9 +3,8 @@
 }
 
 .container .card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 80px 1fr;
     height: 100%;
 
     background: rgba(255, 255, 255, 0.6);
@@ -13,20 +12,74 @@
     border-radius: 1rem;
 }
 
+.container .card .card-test-header {
+    width: 100%;
+    display: flex;
+    background-color: green;
+}
+
 .container .card #title {
-    font-size: 50px;
-    font-weight: bold;
+    display: flex;
+}
+
+.card-test-header #title .test-content .test-label{
+    color: white;
+    background: linear-gradient(#1da1f2, rgba(94, 220, 197));
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 .container .card .card-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 27% 1fr;
     
     margin: 0.5rem;
     padding: 1rem;
 
     width: calc(100% - 1rem);
-    height: calc(85% - 60px);
+    height: calc(95%);
+    background-color: white;
     
+}
+
+.container .card .card-content .test-menu {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.container .card .card-content .test-menu .border {
+    width: 0.25rem;
+    height: 90%;
+    background-color: black;
+}
+
+.container .card .card-content .test-menu .test-menu-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 0.5rem);
+    height: 100%;
+}
+
+.option {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.test-section-content {
+    background-color: black;
+    width: 100%;
+    height: 100%;
 }

@@ -2,11 +2,42 @@
 
 <div class="container">
     <div class="card">
-        <div class="card-test-header">
-            <span id="title">{{test.name}}</span>
+        <div class="card-test-header" action="">
+            <div id="title">
+                <div class="test-header">
+                    <label for="" class="test-title">{{test.name}}</label>
+                </div>
+                <div class="test-content">
+                    <label for="" class="test-label">Código: <span class="test-name">{{test.id}}</span> </label>
+                </div> 
+            </div>
+
         </div>
         <div class="card-content">
-
+            <section class="test-menu">
+                <ul class="test-menu-options">
+                    <li>
+                        <a href="" class="option">
+                            <i class="fas fa-vials"></i>
+                            <label for="">Preguntas</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="option">
+                            <i class="fas fa-users"></i>
+                            <label for="">Pacientes</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="option">
+                            <i class="fas fa-vial"></i>
+                            <label for="">Nueva pregunta</label>
+                        </a>
+                    </li>
+                </ul>
+                <span class="border"></span>
+            </section>
+            <section class="test-section-content"></section>
         </div>
     </div>
 </div>
