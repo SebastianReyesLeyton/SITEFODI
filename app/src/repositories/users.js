@@ -18,6 +18,11 @@ class UserRepository {
         return ans;
     }
 
+    userById(id) {
+        const ans = db.query('SELECT * FROM USER_TABLE WHERE id = ? ', [id]);
+        return ans;
+    }
+
     /* PATIENT QUERIES */
 
     patientById(id) {
@@ -31,7 +36,7 @@ class UserRepository {
     }
 
     patientByDocNum(docNum) {
-        const ans = db.query('SELECT USER_TABLE.id AS id, fullname, docNum FROM PATIENT WHERE docNum = ?', [docNum]);
+        const ans = db.query('SELECT USER_TABLE.id AS id, fullname, docNum FROM PATIENT INNER JOIN USER_TABLE WHERE docNum = ?', [docNum]);
         return ans;
     }
 
@@ -41,7 +46,7 @@ class UserRepository {
     }
 
     patients() {
-        const ans = db.query('SELECT USER_TABLE.id, fullname FROM PATIENT INNER JOIN USER_TABLE USING(id) ')
+        const ans = db.query('SELECT USER_TABLE.id, fullname, age, email, docNum FROM PATIENT INNER JOIN USER_TABLE USING(id) ')
         return ans;
     }
 
@@ -63,7 +68,7 @@ class UserRepository {
     }
 
     therapists() {
-        const ans = db.query('SELECT USER_TABLE.id AS id, fullname FROM THERAPIST INNER JOIN USER_TABLE USING(id) WHERE userType =',['Terapeuta']);
+        const ans = db.query('SELECT USER_TABLE.id AS id, cc, fullname, email, passwd FROM THERAPIST INNER JOIN USER_TABLE USING(id) WHERE userType = ?',['Terapeuta']);
         return ans;
     }
 
@@ -79,6 +84,11 @@ class UserRepository {
         return ans;
     }
 
+    supervisorByCC(cc) {
+        const ans = db.query('SELECT USER_TABLE.id AS id, fullname, cc FROM USER_TABLE INNER JOIN THERAPIST USING(id) WHERE (cc = ? AND userType = ?)', [cc, 'Supervisor']);
+        return ans;
+    }
+
     supervisors() {
         const ans = db.query('SELECT USER_TABLE.id AS id, fullname FROM THERAPIST INNER JOIN USER_TABLE USING(id) WHERE userType =',['Supervisor']);
         return ans;
@@ -87,7 +97,7 @@ class UserRepository {
     /* CONECTIONS BETWEEN THERAPIST AND PATIENT QUERIES */
 
     patientsByTherapist(id) {
-        const ans = db.query('SELECT idPatient, fullname, age, email, ti FROM (SELECT idPatient, idTherapist, ti, age FROM THERAPIST_USER INNER JOIN PATIENT ON THERAPIST_USER.idPatient = PATIENT.id) t1 INNER JOIN USER_TABLE ON USER_TABLE.id = t1.idPatient WHERE idTherapist = ?;', [id])
+        const ans = db.query('SELECT idPatient, fullname, age, email, docNum FROM (SELECT idPatient, idTherapist, docNum, age FROM THERAPIST_USER INNER JOIN PATIENT ON THERAPIST_USER.idPatient = PATIENT.id) t1 INNER JOIN USER_TABLE ON USER_TABLE.id = t1.idPatient WHERE idTherapist = ?;', [id])
         return ans;
     }
 
@@ -101,10 +111,11 @@ class UserRepository {
     /* USER QUERIES */
 
     addNewUser(user) {
-        const ans = db.query('INSERT INTO USER_TABLE (fullname, email, passwd) VALUES (?,?,?)', [
+        const ans = db.query('INSERT INTO USER_TABLE (fullname, email, passwd, userType) VALUES (?,?,?,?)', [
             user.fullname, 
             user.email, 
-            user.passwd 
+            user.passwd,
+            user.userType
         ]);
         return ans
     }
@@ -112,7 +123,7 @@ class UserRepository {
     /* PATIENT QUERIES */
 
     addNewPatient(patient) {
-        const ans = db.query('INSERT INTO PATIENT (id, gender, leftHearingAid, rightHearingAid, age, documentType, docNum) VALUES (?, ?, ?, ?, ?, ?)', [
+        const ans = db.query('INSERT INTO PATIENT (id, gender, leftHearingAid, rightHearingAid, age, documentType, docNum) VALUES (?,?,?,?,?,?,?)', [
             patient.id,
             patient.gender,
             patient.leftHearingAid,
@@ -126,7 +137,7 @@ class UserRepository {
 
     /* THERAPIST QUERIES */
 
-    addTherapist(therapist) {
+    addNewTherapist(therapist) {
         const ans = db.query('INSERT INTO THERAPIST (id, cc) VALUES (?, ?)', [
             therapist.id,
             therapist.cc
@@ -149,7 +160,7 @@ class UserRepository {
     /* USER QUERIES */
 
     updateUser(user) {
-        const ans = db.query('UPDATE USER_TABLE SET (fullname = ?, email = ?, passwd = ?) WHERE id = ?', [
+        const ans = db.query('UPDATE USER_TABLE SET fullname = ?, email = ?, passwd = ? WHERE id = ?', [
             user.fullname,
             user.email,
             user.passwd,
@@ -168,7 +179,7 @@ class UserRepository {
     /* PATIENT QUERIES */
 
     updatePatient(patient) {
-        const ans = db.query('UPDATE PATIENT SET (gender = ?, leftHearingAid = ?, rightHearingAid = ?, age = ?, documentType = ?, docNum = ?) WHERE (id = ?)', [
+        const ans = db.query('UPDATE PATIENT SET gender = ?, leftHearingAid = ?, rightHearingAid = ?, age = ?, documentType = ?, docNum = ? WHERE (id = ?)', [
             patient.gender,
             patient.leftHearingAid,
             patient.rightHearingAid,

@@ -15,11 +15,34 @@ router.get('/home/supervisor', (req, res) => {
     res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Inicio', search: 'Home' })
 });
 
+router.get('/show-therapists/supervisor', async (req, res) => {
+    
+    let ans = await userService.getTherapists()
+    console.log(ans)
+    res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Ver Terapeutas', search: 'Therapists', users: ans.ans})
+});
+
 router.get('/show-patients/supervisor', async (req, res) => {
     
     let ans = await userService.getPatients()
     console.log(ans)
     res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Ver Pacientes', search: 'Patients', users: ans.ans})
+});
+
+router.get('/register-patient/supervisor', (req, res) => {
+    console.log('therapist')
+    console.log(web_user.user)
+    res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Registrar Paciente'})
+});
+
+router.get('/register-therapist/supervisor', (req, res) => {
+    res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Registrar Terapeuta'})
+})
+
+router.get('/profile/supervisor', (req, res) => {
+    console.log('therapist')
+    console.log(web_user.user)
+    res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Perfil'})
 });
 
 
@@ -30,21 +53,20 @@ router.get('/home/therapist', (req, res) => {
 });
 
 router.get('/show-patients/therapist', async (req, res) => {
-    
     let ans = await userService.getPatientsByTherapist(web_user.user.id)
-    res.render('layouts/home', {therapist: 1, user: web_user, title: 'Ver Pacientes', search: 1})
+    res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Ver Pacientes', search: 'Patients', users: ans.ans})
 });
 
 router.get('/register-patient/therapist', (req, res) => {
     console.log('therapist')
     console.log(web_user.user)
-    res.render('layouts/home', {therapist: 1, user: web_user, title: 'Registrar Paciente', search: 1})
+    res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Registrar Paciente'})
 });
 
 router.get('/profile/therapist', (req, res) => {
     console.log('therapist')
     console.log(web_user.user)
-    res.render('layouts/home', {therapist: 1, user: web_user, title: 'Perfil', search: 0})
+    res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Perfil'})
 });
 
 // Patient home routes
@@ -52,13 +74,13 @@ router.get('/profile/therapist', (req, res) => {
 router.get('/home/patient', (req, res) => {
     console.log('Patient')
     console.log(web_user.user)
-    res.render('layouts/home', {therapist: 0, user: web_user, title: 'Inicio', search: 0})
+    res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Inicio'})
 });
 
 router.get('/profile/patient', (req, res) => {
     console.log('Patient')
     console.log(web_user.user)
-    res.render('layouts/home', {therapist: 0, user: web_user, title: 'Perfil', search: 0})
+    res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Perfil'})
 });
 
 // Sing-out

@@ -3,8 +3,15 @@
 <div class="container">
 
     <div class="card">
+        {{#if err }}
+            <div class="error-message">
+                <div class="error-content">
+                    <span>{{ err }}</span>
+                </div>
+            </div>
+        {{/if}}
         <label for="" id="title">Registro de paciente</label>
-        <form action="/users/register" method="POST" class="form" enctype="multipart/form-data">
+        <form action="/users/register-patient" method="POST" class="form" enctype="multipart/form-data">
             
             <div class="card-content">
 
@@ -18,13 +25,23 @@
                 </div>
 
                 <div class="input-class">
-                    <label for="" class="fullname">Nombre completo:</label>
+                    <label for="" class="fullname">Nombre y Apellidos:</label>
                     <input type="text" name="fullname" id="fullname" placeholder="Nombre" required>
                 </div>
 
                 <div class="input-class">
                     <label for="">Número de documento:</label>
-                    <input type="text" name="ti" id="ti" placeholder="Tarjeta de identidad" required>
+                    <input type="text" name="docNum" id="docNum" placeholder="192341685" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Tipo de documento:</label>
+                    <select name="documentType" id="documentType" required>
+                        <option value="">--Selecciona--</option>
+                        <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                        <option value="Registro Civil">Registro Civil</option>
+                        <option value="Otro">Otro</option>
+                    </select>
                 </div>
 
                 <div class="input-class">
@@ -43,13 +60,13 @@
                 </div>
 
                 <div class="input-class">
-                    <label for="">Implante izquierdo: </label>
-                    <input type="text" name="leftImplant" id="leftImplant">
+                    <label for="">Ayuda Auditiva OI: </label>
+                    <input type="text" name="leftHearingAid" id="leftHearingAid">
                 </div>
 
                 <div class="input-class">
-                    <label for="">Implante derecho:</label>
-                    <input type="text" name="rightImplant" id="rightImplant">
+                    <label for="">Ayuda Auditiva OD: </label>
+                    <input type="text" name="rightHearingAid" id="rightHearingAid">
                 </div>
 
             </div>

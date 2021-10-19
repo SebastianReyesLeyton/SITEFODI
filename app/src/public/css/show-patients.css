@@ -6,6 +6,9 @@
     display: flex;
     align-items: center;
     height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
 }
 
 .container .card #title {
@@ -33,7 +36,7 @@
     /* background-color: red; */
     overflow-y: scroll;
     scrollbar-width: none;
-    max-height: calc(100%);
+    height: calc(100%);
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius: 0rem 0rem 1rem 1rem;
 }
@@ -60,7 +63,11 @@
     grid-template-columns: 1fr 4rem 1fr 12rem 4rem;
     justify-content: center;
     align-items: center;
-    
+}
+
+.users {
+    background-color: white;
+    border-radius: 1rem;
 }
 
 .column:first-child {

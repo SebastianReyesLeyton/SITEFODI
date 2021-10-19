@@ -5,13 +5,25 @@ const testMapper = require('../mappers/test')
 
 let web_user = require('../models/user-login-web')
 
+router.get('/supervisor', async (req, res) => {
+    try {
+        console.log('therapist')
+        console.log(web_user.user)
+        let tests = await testService.getTests()
+        console.log(tests)
+        res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Tests', search: 'Therapists-Tests', tests: tests.ans })
+    } catch (err) {
+        console.log(err)
+    }
+});
+
 router.get('/therapist', async (req, res) => {
     try {
         console.log('therapist')
         console.log(web_user.user)
         let tests = await testService.getTests()
         console.log(tests)
-        res.render('layouts/home', {therapist: 1, user: web_user, title: 'Tests', search: 1, tests: tests.ans })
+        res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Tests', search: 'Therapists-Tests', tests: tests.ans })
     } catch (err) {
         console.log(err)
     }
@@ -25,7 +37,7 @@ router.get('/therapist/test/:id', (req, res) => {
 router.get('/patient', (req, res) => {
     console.log('Patient')
     console.log(web_user.user)
-    res.render('layouts/home', {therapist: 0, user: web_user, title: 'Tests', search: 1})
+    res.render('layouts/home', {  user: web_user.user, avatar: web_user.avatar, title: 'Tests', search: 'Patient-Tests'})
 });
 
 router.post('/create', async (req, res) => {

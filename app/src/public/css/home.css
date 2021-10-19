@@ -188,8 +188,9 @@ ul {
 
 .sidebar-menu {
     margin-top: 1rem;
-    display: grid;
-    grid-template-rows: 1fr 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     height: calc(100vh - 106px);
 }
 
@@ -288,6 +289,6 @@ header label span {
 main {
     margin-top: 90px;
     padding: 2rem 1.5rem;
-    background: #f1f5f9;
+    background-image: url('../img/hand_painted_blue_watercolour_background_1606.jpg');
     min-height: calc(100vh - 90px);
 }

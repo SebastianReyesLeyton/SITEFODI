@@ -1,0 +1,106 @@
+.container {
+    height: calc(100vh - 90px - 64px);
+}
+
+.container .card {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+}
+
+.container .card #title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.container .card .card-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 95%;
+    height: calc(100% - 4rem - 50px - 60px);
+    /* background-color: blue; */
+    margin-top: 2rem;
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+
+
+.container .card .card-content .users {
+    margin: 0rem 1rem 0px 1rem;
+    padding-top: 0.5rem;
+    width: calc(100% - 0.5rem);
+    /* background-color: red; */
+    overflow-y: scroll;
+    scrollbar-width: none;
+    max-height: calc(100%);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border-radius: 0rem 0rem 1rem 1rem;
+}
+
+.user-header {
+    
+    margin: 0px 1rem 0px 1rem;
+    width: calc(100% - 0.5rem);
+    border-radius: 1rem 1rem 0rem 0rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: none;
+    padding: 0.5rem 0rem 0.3rem 0;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+}
+
+.user-class {
+    margin: 0.2rem;
+}
+
+.user-content {
+    display: grid;
+    grid-template-columns: 1fr 12rem 1fr 12rem 4rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.users {
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.users .user-class .user-content .column {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.column:first-child {
+    width: calc(100% - 0.2rem);
+    text-align: center;
+    padding: 0.2rem 0rem 0.2rem 0rem;
+    margin-bottom: 0.2rem;
+}
+
+.column:not(:first-child) {
+    width: calc(100% - 0.2rem);
+    margin-left: 0.2rem;
+    text-align: center;
+    padding: 0.2rem 0rem 0.2rem 0rem;
+    margin-bottom: 0.2rem;
+}
+
+.users .user-content:hover {
+    background-color: rgba(171, 226, 243, 0.631);
+}
+
+
+.register {
+    width: calc(100%);
+    z-index: 3;
+    height: calc(100%);
+    position: absolute;
+    background-color: rgba(15, 127, 161, 0.796);
+    border-radius: 1rem;
+}

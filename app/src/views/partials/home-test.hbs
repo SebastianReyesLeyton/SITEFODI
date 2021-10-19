@@ -7,19 +7,6 @@
         <div class="card-content">
 
             <div class="card-tests">
-                {{#each tests}}
-                    <a href="/tests/therapist/test/{{this.id}}" class="card-test">
-                        <i class="fas fa-file-signature" id="test-icon"></i>
-                        <div class="card-test-content">
-                            <div class="test-header">
-                                <label for="" class="test-title">{{this.name}}</label>
-                            </div>
-                            <div class="test-content">
-                                <label for="" class="test-label">Código: <span class="test-name">{{this.id}}</span> </label>
-                            </div>
-                        </div>
-                    </a>
-                {{/each}}
 
                 <a class="card-test">
                     <div id="plus" class="card-test-content">
@@ -34,6 +21,21 @@
                         </form>
                     </div>
                 </a>
+
+                {{#each tests}}
+                    <a href="/tests/therapist/test/{{this.id}}" class="card-test">
+                        <i class="fas fa-file-signature" id="test-icon"></i>
+                        <div class="card-test-content">
+                            <div class="test-header">
+                                <label for="" class="test-title">{{this.name}}</label>
+                            </div>
+                            <div class="test-content">
+                                <label for="" class="test-label">Código: <span class="test-name">{{this.id}}</span> </label>
+                            </div>
+                        </div>
+                    </a>
+                {{/each}}
+
             </div>
 
         </div>

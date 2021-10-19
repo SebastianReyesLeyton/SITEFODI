@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/css/show-therapists.css">
+
+<div class="container">
+    
+    <div class="card">
+
+        <span id="title">Terapeutas</span>
+        <div class="card-content">
+            
+            <div class="user-class user-header">
+
+                <ul class="user-content">
+                    <li class="column name">NOMBRE</li>
+                    <li class="column age">CÉDULA</li>
+                    <li class="column email">EMAIL</li>
+                    <li class="column ti">CONTRASEÑA</li>
+                    <li class="column"></li>
+                    
+                </ul>
+            </div>
+
+            <div class="users">
+
+                {{#each users}}
+                    <div class="user-class">
+                        <ul class="user-content">
+                            <li class="column name">{{this.fullname}}</li>
+                            <li class="column">{{this.cc}}</li>
+                            <li class="column">{{this.email}}</li>
+                            <li class="column password">{{this.passwd}}</li>
+                            <li class="column">
+                                <div class="user-options">
+                                    <a href=""><i class="fas fa-user-edit"></i></a>
+                                    <a href=""><i class="fas fa-user-times"></i></a>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="register"></div>
+    </div>
+
+</div>
+
+<script src="/js/show-therapists.js"></script>

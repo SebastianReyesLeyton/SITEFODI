@@ -1,0 +1,109 @@
+{{#ifEquals title "Inicio"}}
+
+    <li>
+        <a href="/home/supervisor" class="active" id="Inicio"> <span class="fas fa-home"></span>
+        <span>Inicio</span> </a>
+    </li>
+    
+{{else}}
+    
+    <li>
+        <a href="/home/supervisor" id="Inicio"> <span class="fas fa-home"></span>
+        <span>Inicio</span> </a>
+    </li>
+
+{{/ifEquals}}
+
+{{!-- SHOW PATIENTS OPTION --}}
+
+{{#ifEquals title "Ver Pacientes"}}
+    <li>
+        <a href="/show-patients/supervisor" class="active" id="Pacientes"> <span class="fas fa-user-friends"></span> 
+        <span>Ver Pacientes</span> </a>
+    </li>
+{{else}}
+    <li>
+        <a href="/show-patients/supervisor" id="Pacientes"> <span class="fas fa-user-friends"></span> 
+        <span>Ver Pacientes</span> </a>
+    </li>
+
+{{/ifEquals}}
+
+{{!-- SHOW THERAPISTS OPTION --}}
+
+{{#ifEquals title "Ver Terapeuta"}}
+    <li>
+        <a href="/show-therapists/supervisor" class="active" id="Terapeuta"> <span class="fas fa-user-nurse"></span> 
+        <span>Ver Terapeutas</span> </a>
+    </li>
+{{else}}
+    <li>
+        <a href="/show-therapists/supervisor" id="Terapeuta"> <span class="fas fa-user-nurse"></span> 
+        <span>Ver Terapeutas</span> </a>
+    </li>
+
+{{/ifEquals}}
+
+{{!-- REGISTER PATIENTS OPTION --}}
+
+{{#ifEquals title "Registrar Paciente"}}
+    <li>
+        <a href="/register-patient/supervisor" id="RegistroPaciente" class='active'> <span class="fas fa-id-badge"></span>
+        <span>Registrar Paciente</span> </a>
+    </li>
+{{else}}
+    <li>
+        <a href="/register-patient/supervisor" id="RegistroPaciente"> <span class="fas fa-id-badge"></span>
+        <span>Registrar Paciente</span> </a>
+    </li>
+{{/ifEquals}}
+
+{{!-- REGISTER THERAPIST OPTION --}}
+
+{{#ifEquals title "Registrar Terapeuta"}}
+    <li>
+        <a href="/register-therapist/supervisor" id="RegistroPaciente" class='active'> <span class="fas fa-id-card"></span>
+        <span>Registrar Terapeuta</span> </a>
+    </li>
+{{else}}
+    <li>
+        <a href="/register-therapist/supervisor" id="RegistroPaciente"> <span class="fas fa-id-card"></span>
+        <span>Registrar Terapeuta</span> </a>
+    </li>
+{{/ifEquals}}
+
+{{!-- TESTS OPTION --}}
+
+{{#ifEquals title "Tests"}}
+
+    <li>
+        <a href="/tests/supervisor" id="Tests" class="active"> <span class="fas fa-cube"></span>
+        <span>Tests</span> </a>
+    </li>
+   
+{{else}}
+    
+    <li>
+        <a href="/tests/supervisor" id="Tests"> <span class="fas fa-cube"></span>
+        <span>Tests</span> </a>
+    </li>
+    
+{{/ifEquals}}
+
+{{!-- PROFILE OPTION --}}
+
+{{#ifEquals title "Perfil"}}
+
+    <li>
+        <a href="/profile/supervisor" id="Perfil" class="active"> <span class="fas fa-user"></span>
+        <span>Perfil</span> </a>
+    </li>
+    
+{{else}}
+    
+    <li>
+        <a href="/profile/supervisor" id="Perfil"> <span class="fas fa-user"></span>
+        <span>Perfil</span> </a>
+    </li>
+    
+{{/ifEquals}}

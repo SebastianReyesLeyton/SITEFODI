@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/css/registerTherapist.css">
+
+<div class="container">
+
+    <div class="card">
+        {{#if err }}
+            <div class="error-message">
+                <div class="error-content">
+                    <span>{{ err }}</span>
+                </div>
+            </div>
+        {{/if}}
+        <label for="" id="title">Registro de terapeuta</label>
+        <form action="/users/register-therapist" method="POST" class="form" enctype="multipart/form-data">
+            
+            <div class="card-content">
+
+                <div class="input-class">
+                    <label for="" class="fullname">Nombre y Apellidos:</label>
+                    <input type="text" name="fullname" id="fullname" placeholder="Nombre" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Número de cédula:</label>
+                    <input type="text" name="cc" id="c" placeholder="192341685" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Correo electronico: </label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Contraseña: </label>
+                    <input type="password" name="passwd" id="passwd" required>
+                </div>
+
+                <div class="input-class">
+                    <label for="">Tipo de usuario:</label>
+                    <select name="userType" id="userType" required>
+                        <option value="">--Selecciona--</option>
+                        <option value="Terapeuta">Terapeuta</option>
+                        <option value="Supervisor">Supervisor</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit" class="col-6 btn btn-info button-submit">Registrar</button>
+        </form>
+    
+    </div>
+
+</div>

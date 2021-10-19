@@ -42,19 +42,28 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register-patient', async (req, res) => {
     try {
         console.log(req.body)
-        const ans = await userService.registerUser(req.body);
+        req.body.userType = 'Paciente'
+        const ans = await userService.registerPatient(req.body);
 
         console.log(ans)
-        if (ans.err.code == 0) {
-            res.send(ans.err.message)
-        }
-        else {
-            res.send(ans.err)
-        }
+
+        res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Registrar Paciente', err: ans.err.message })
         
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+router.post('/register-therapist', async (req, res) => {
+    try {
+        console.log('/register-therapist')
+        console.log(req.body)
+        const ans = await userService.registerTherapist(req.body)
+        console.log(ans.err)
+        res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Registrar Terapeuta', err: ans.err.message })  
     } catch (err) {
         console.log(err)
     }
@@ -70,6 +79,24 @@ router.get('/patients', async (req, res) => {
     } catch (err) {
         console.log('Error')
         console.log(err)
+    }
+})
+
+router.post('/upload-patient-info/:id', async (req, res) => {
+    
+    let user = req.body
+    console.log(req.body)
+    user.id = req.params.id
+    let ans = await userService.uploadPatientInfo(user)
+    console.log(user.id)
+    console.log(web_user.user.id)
+    if (user.id == web_user.user.id) {
+        ans = await userService.getPatientById(user.id);
+    }
+    console.log(ans)
+    web_user.user = ans
+    if (web_user.user.userType == 'Paciente') {
+        res.redirect('/profile/patient')
     }
 })
 

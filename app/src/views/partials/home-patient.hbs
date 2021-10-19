@@ -1,0 +1,51 @@
+{{#ifEquals title "Inicio"}}
+
+    <li>
+        <a href="/home/patient" class="active" id="Inicio"> <span class="fas fa-home"></span>
+        <span>Inicio</span> </a>
+    </li>
+
+{{else}}
+   
+    <li>
+        <a href="/home/patient" id="Inicio"> <span class="fas fa-home"></span>
+        <span>Inicio</span> </a>
+    </li>
+
+{{/ifEquals}}
+
+{{!-- TESTS OPTION --}}
+
+{{#ifEquals title "Tests"}}
+
+    <li>
+        <a href="/tests/patient" id="Tests" class="active"> <span class="fas fa-cube"></span>
+        <span>Tests</span> </a>
+    </li>
+
+{{else}}
+
+    <li>
+        <a href="/tests/patient" id="Tests"> <span class="fas fa-cube"></span>
+        <span>Tests</span> </a>
+    </li>
+    
+{{/ifEquals}}
+
+{{!-- PROFILE OPTION --}}
+
+{{#ifEquals title "Perfil"}}
+    
+    <li>
+        <a href="/profile/patient" id="Perfil" class="active"> <span class="fas fa-user"></span>
+        <span>Perfil</span> </a>
+    </li>
+
+{{else}}
+    
+    <li>
+        <a href="/profile/patient" id="Perfil"> <span class="fas fa-user"></span>
+        <span>Perfil</span> </a>
+    </li>
+
+{{/ifEquals}}

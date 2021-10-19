@@ -42,9 +42,9 @@ DESCRIBE THERAPIST;
 
 CREATE TABLE PATIENT (
     id INT NOT NULL,
-    gender VARCHAR(4) NOT NULL CHECK( gender =' niño' OR gender = 'niña') ,
-    leftHearingAid VARCHAR(50) NOT NULL,
-    rightHearingAid VARCHAR(50) NOT NULL,
+    gender VARCHAR(4) NOT NULL CHECK( gender = 'niño' OR gender = 'niña') ,
+    leftHearingAid VARCHAR(50) DEFAULT '',
+    rightHearingAid VARCHAR(50) DEFAULT '',
     age INT NOT NULL CHECK( age > 0 AND age <= 16 ),
     documentType VARCHAR(20) NOT NULL CHECK( documentType IN ('Registro Civil', 'Tarjeta de Identidad', 'Otro')),
     docNum VARCHAR(25) UNIQUE NOT NULL,

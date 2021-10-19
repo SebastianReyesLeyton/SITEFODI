@@ -4,53 +4,101 @@
 
     <div class="card">
 
-        <label for="" id="title">Perfil paciente</label>
+        <label for="" id="title">Perfil paciente <a onclick="showButtons()" ><i class="fas fa-user-edit" style="cursor:pointer"></i></a></label>
         <div class="form">
 
             <div class="card-header">
-                <img src={{user.avatar}} alt="">
+                <img src={{avatar}} alt="">
             </div>
 
-            <div class="card-content">
+            <form class="card-content" action="/users/upload-patient-info/{{user.id}}" method="POST">
 
                 <div class="input-class">
                     <label for="">Niño/niña: </label>
-                    <input type="text" name="gender" id="gender" value="{{user.user.gender}}" disabled>
+                        <select name="gender" id="gender" disabled>
+                            <option value="">--Selecciona--</option>
+                            {{#ifEquals user.gender 'niño'}}
+                                <option value="niño" selected>Niño</option>
+                            {{else}}
+                                <option value="niño">Niño</option>
+                            {{/ifEquals}}
+                            {{#ifEquals user.gender 'niña'}}
+                                <option value="niña" selected>Niña</option>
+                            {{else}}
+                                <option value="niña">Niña</option>
+                            {{/ifEquals}}
+                        </select>
                 </div>
 
                 <div class="input-class">
                     <label for="" class="fullname">Nombre completo:</label>
-                    <input type="text" name="fullname" id="fullname" value="{{user.user.name}}" placeholder="" disabled>
+                    <input type="text" name="fullname" id="fullname" value="{{user.name}}" placeholder="" disabled>
+                </div>
+                
+                <div class="input-class">
+                    <label for="">Número de documento:</label>
+                    <input type="text" name="docNum" id="docNum" value="{{user.docNum}}" disabled>
                 </div>
 
                 <div class="input-class">
-                    <label for="">Número de documento:</label>
-                    <input type="text" name="ti" id="ti" value="{{user.user.ti}}" disabled>
+                    <label for="">Tipo de documento:</label>
+                        <select name="documentType" id="documentType" disabled>
+                            <option value="">--Selecciona--</option>
+                            {{#ifEquals user.documentType "Tarjeta de Identidad"}}
+                                <option value="Tarjeta de Identidad" selected>Tarjeta de Identidad</option>
+                            {{else}}
+                                <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                            {{/ifEquals}}
+                        
+                            {{#ifEquals user.documentType "Registro Civil"}}
+                                <option value="Registro Civil" selected>Registro Civil</option>
+                            {{else}}
+                                <option value="Registro Civil">Registro Civil</option>
+                            {{/ifEquals}}
+
+                            {{#ifEquals user.documentType "Otro"}}
+                                <option value="Otro" selected>Otro</option>
+                            {{else}}
+                                <option value="Otro">Otro</option>
+                            {{/ifEquals}}
+
+                        </select>
                 </div>
 
                 <div class="input-class">
                     <label for="">Edad: </label>
-                    <input type="text" name="age" id="age" value="{{user.user.age}}" disabled>
+                    <input type="number" name="age" id="age" min="1" max="16" placeholder="1-16" value="{{user.age}}" disabled>
                 </div>
 
                 <div class="input-class">
                     <label for="">Correo electronico: </label>
-                    <input type="email" name="email" id="email" value="{{user.user.email}}" disabled>
+                    <input type="email" name="email" id="email" value="{{user.email}}" disabled>
                 </div>
 
                 <div class="input-class">
-                    <label for="">Implante izquierdo: </label>
-                    <input type="text" name="leftImplant" id="leftImplant" value="{{user.user.leftImplant}}" disabled>
+                    <label for="">Contraseña: </label>
+                    <input type="password" name="passwd" id="passwd" value="{{user.password}}" disabled>
                 </div>
 
                 <div class="input-class">
-                    <label for="">Implante derecho:</label>
-                    <input type="text" name="rightImplant" id="rightImplant" value="{{user.user.rightImplant}}" disabled>
+                    <label for="">Ayuda Auditiva OI: </label>
+                    <input type="text" name="leftHearingAid" id="leftHearingAid" value="{{user.leftHearingAid}}" disabled>
                 </div>
 
-            </div>
+                <div class="input-class">
+                    <label for="">Ayuda Auditiva OD: </label>
+                    <input type="text" name="rightHearingAid" id="rightHearingAid" value="{{user.rightHearingAid}}" disabled>
+                </div>
+
+                <div class="disable-buttons">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <div class="btn btn-danger" onclick="cancel()">Cancelar</div>
+                </div>
+            </form>
         </div>
     
     </div>
 
 </div>
+
+<script src="/js/profile-patient.js"></script>

@@ -10,149 +10,14 @@
 
     <div class="sidebar-menu">
         <ul>
-            {{#ifEquals title "Inicio"}}
-                {{#ifEquals user.userType "Terapeuta"}}
-                    <li>
-                        <a href="/home/therapist" class="active" id="Inicio"> <span class="fas fa-home"></span>
-                        <span>Inicio</span> </a>
-                    </li>
-                {{else}}
-                    {{#ifEquals user.userType "Paciente"}}
-                        <li>
-                            <a href="/home/patient" class="active" id="Inicio"> <span class="fas fa-home"></span>
-                            <span>Inicio</span> </a>
-                        </li>
-                    {{else}}
-                        <li>
-                            <a href="/home/supervisor" class="active" id="Inicio"> <span class="fas fa-home"></span>
-                            <span>Inicio</span> </a>
-                        </li>
-                    {{/ifEquals}}
-                {{/ifEquals}}
+            {{#ifEquals user.userType 'Paciente' }}
+                {{> home-patient }}
             {{else}}
-                {{#ifEquals user.userType "Terapeuta"}}
-                    <li>
-                        <a href="/home/therapist" id="Inicio"> <span class="fas fa-home"></span>
-                        <span>Inicio</span> </a>
-                    </li>
+                {{#ifEquals user.userType 'Terapeuta' }}
+                    {{> home-therapist }}
                 {{else}}
-                    {{#ifEquals user.userType "Paciente"}}
-                        <li>
-                            <a href="/home/patient" id="Inicio"> <span class="fas fa-home"></span>
-                            <span>Inicio</span> </a>
-                        </li>
-                    {{else}}
-                        <li>
-                            <a href="/home/supervisor" id="Inicio"> <span class="fas fa-home"></span>
-                            <span>Inicio</span> </a>
-                        </li>
-                    {{/ifEquals}}
+                    {{> home-supervisor }}
                 {{/ifEquals}}
-
-            {{/ifEquals}}
-
-            {{!-- SHOW PATIENTS OPTION --}}
-
-            {{#ifEquals user.userType "Terapeuta"}}
-                {{#ifEquals title "Ver Pacientes"}}
-                    <li>
-                        <a href="/show-patients/therapist" class="active" id="Pacientes"> <span class="fas fa-user-friends"></span> 
-                        <span>Ver Pacientes</span> </a>
-                    </li>
-                {{else}}
-                    <li>
-                        <a href="/show-patients/therapist" id="Pacientes"> <span class="fas fa-user-friends"></span> 
-                        <span>Ver Pacientes</span> </a>
-                    </li>
-
-                {{/ifEquals}}
-            {{else}}
-                {{#ifEquals user.userType "Supervisor"}}
-                    {{#ifEquals title "Ver Pacientes"}}
-                        <li>
-                            <a href="/show-patients/supervisor" class="active" id="Pacientes"> <span class="fas fa-user-friends"></span> 
-                            <span>Ver Pacientes</span> </a>
-                        </li>
-                    {{else}}
-                        <li>
-                            <a href="/show-patients/supervisor" id="Pacientes"> <span class="fas fa-user-friends"></span> 
-                            <span>Ver Pacientes</span> </a>
-                        </li>
-
-                    {{/ifEquals}}
-                {{/ifEquals}}
-            {{/ifEquals}}
-
-            {{!-- REGISTER PATIENTS OPTION --}}
-
-            {{#if therapist}}
-                {{#ifEquals title "Registrar Paciente"}}
-                    <li>
-                        <a href="/register-patient/therapist" id="RegistroPaciente" class='active'> <span class="fas fa-portrait"></span>
-                        <span>Registrar Paciente</span> </a>
-                    </li>
-                {{else}}
-                    <li>
-                        <a href="/register-patient/therapist" id="RegistroPaciente"> <span class="fas fa-portrait"></span>
-                        <span>Registrar Paciente</span> </a>
-                    </li>
-                {{/ifEquals}}
-            {{/if}}
-
-            {{!-- TESTS OPTION --}}
-
-            {{#ifEquals title "Tests"}}
-                {{#if therapist}}
-                    <li>
-                        <a href="/tests/therapist" id="Tests" class="active"> <span class="fas fa-cube"></span>
-                        <span>Tests</span> </a>
-                    </li>
-                {{else}}
-                    <li>
-                        <a href="/tests/patient" id="Tests" class="active"> <span class="fas fa-cube"></span>
-                        <span>Tests</span> </a>
-                    </li>
-                {{/if}}
-            {{else}}
-                {{#if therapist}}
-                    <li>
-                        <a href="/tests/therapist" id="Tests"> <span class="fas fa-cube"></span>
-                        <span>Tests</span> </a>
-                    </li>
-                {{else}}
-                    <li>
-                        <a href="/tests/patient" id="Tests"> <span class="fas fa-cube"></span>
-                        <span>Tests</span> </a>
-                    </li>
-                {{/if}}
-            {{/ifEquals}}
-
-            {{!-- PROFILE OPTION --}}
-
-            {{#ifEquals title "Perfil"}}
-                {{#if therapist}}
-                    <li>
-                        <a href="/profile/therapist" id="Perfil" class="active"> <span class="fas fa-user"></span>
-                        <span>Perfil</span> </a>
-                    </li>
-                {{else}}
-                    <li>
-                        <a href="/profile/patient" id="Perfil" class="active"> <span class="fas fa-user"></span>
-                        <span>Perfil</span> </a>
-                    </li>
-                {{/if}}
-            {{else}}
-                {{#if therapist}}
-                    <li>
-                        <a href="/profile/therapist" id="Perfil"> <span class="fas fa-user"></span>
-                        <span>Perfil</span> </a>
-                    </li>
-                {{else}}
-                    <li>
-                        <a href="/profile/patient" id="Perfil"> <span class="fas fa-user"></span>
-                        <span>Perfil</span> </a>
-                    </li>
-                {{/if}}
             {{/ifEquals}}
         </ul>
         <ul>
@@ -192,12 +57,8 @@
     </header>
 
     <main>
-        {{#ifEquals title "Perfil"}}
-            {{#if therapist}}
-                {{> profile-therapist }}
-            {{else}}
-                {{> profile-patient }}
-            {{/if}}
+        {{#ifEquals title "Tests"}}
+            {{> home-test }}
         {{/ifEquals}}
 
         {{#ifEquals title "Registrar Paciente"}}
@@ -208,8 +69,20 @@
             {{> show-patients }}
         {{/ifEquals}}
 
-        {{#ifEquals title "Tests"}}
-            {{> home-test }}
+        {{#ifEquals title "Registrar Terapeuta"}}
+            {{> registerTherapist }}
+        {{/ifEquals}}
+
+        {{#ifEquals title "Ver Terapeutas"}}
+            {{> show-therapists }}
+        {{/ifEquals}}
+
+        {{#ifEquals title "Perfil"}}
+            {{#ifEquals user.userType 'Paciente'}}
+                {{> profile-patient }}
+            {{else}}
+                {{> profile-therapist }}
+            {{/ifEquals}}
         {{/ifEquals}}
 
     </main>
