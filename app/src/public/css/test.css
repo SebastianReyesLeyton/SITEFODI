@@ -1,0 +1,32 @@
+.container {
+    height: calc(100vh - 90px - 64px);
+}
+
+.container .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+}
+
+.container .card #title {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.container .card .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0.5rem;
+    padding: 1rem;
+
+    width: calc(100% - 1rem);
+    height: calc(85% - 60px);
+    
+}

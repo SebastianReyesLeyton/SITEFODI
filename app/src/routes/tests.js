@@ -11,7 +11,7 @@ router.get('/supervisor', async (req, res) => {
         console.log(web_user.user)
         let tests = await testService.getTests()
         console.log(tests)
-        res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Tests', search: 'Therapists-Tests', tests: tests.ans })
+        res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Pruebas', search: 'Therapists-Tests', tests: tests.ans })
     } catch (err) {
         console.log(err)
     }
@@ -23,7 +23,7 @@ router.get('/therapist', async (req, res) => {
         console.log(web_user.user)
         let tests = await testService.getTests()
         console.log(tests)
-        res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Tests', search: 'Therapists-Tests', tests: tests.ans })
+        res.render('layouts/home', { user: web_user.user, avatar: web_user.avatar, title: 'Pruebas', search: 'Therapists-Tests', tests: tests.ans })
     } catch (err) {
         console.log(err)
     }
@@ -32,6 +32,7 @@ router.get('/therapist', async (req, res) => {
 router.get('/therapist/test/:id', (req, res) => {
     let id = req.params.id
     console.log(`/therapist/test/${id}`)
+
 });
 
 router.get('/patient', (req, res) => {

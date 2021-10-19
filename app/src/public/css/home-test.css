@@ -7,6 +7,10 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
 }
 
 .container .card #title {
@@ -22,7 +26,7 @@
     margin: 0.5rem;
     padding: 1rem;
 
-    width: calc(100% - 1rems);
+    width: calc(100% - 1rem);
     height: calc(85% - 60px);
     
 }
@@ -97,7 +101,7 @@
     cursor: pointer;
 }
 
-.card-test:last-child:hover #op1 {
+.card-test:first-child:hover #op1 {
     transform: rotateY(360deg);
 }
 

@@ -57,7 +57,7 @@
     </header>
 
     <main>
-        {{#ifEquals title "Tests"}}
+        {{#ifEquals title "Pruebas"}}
             {{> home-test }}
         {{/ifEquals}}
 
@@ -83,6 +83,10 @@
             {{else}}
                 {{> profile-therapist }}
             {{/ifEquals}}
+        {{/ifEquals}}
+
+        {{#ifEquals title "Prueba"}}
+            {{> test }}
         {{/ifEquals}}
 
     </main>
